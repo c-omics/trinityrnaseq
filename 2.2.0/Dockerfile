@@ -1,4 +1,4 @@
-FROM comics/centos
+FROM comics/samtools
 MAINTAINER Ian Merrick <MerrickI@Cardiff.ac.uk>
 
 ##############################################################
@@ -16,10 +16,13 @@ ENV LD_LIBRARY_PATH=/software/applications/trinityrnaseq/v2.2.0/trinity-plugins/
 ENV DEST=/software/applications/$APP_NAME/
 ENV PATH=$DEST/$VERSION:$PATH
 
-RUN yum install -y bzip2 ; \
+RUN yum install -y bzip2 \
+                   ncurses-devel \
+                   zlib-devel ; \
     git clone $GIT ; \
     cd $APP_NAME ; \
     git checkout tags/$VERSION ; \
+    sed -i 's/^\(trinity_essentials:.*\) samtools/\1 /g' Makefile ; \
     make -j        ; \
     make trinity_essentials   ; \
     make plugins   ; \
