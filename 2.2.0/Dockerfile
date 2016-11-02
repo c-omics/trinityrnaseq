@@ -17,7 +17,9 @@ ENV DEST=/software/applications/$APP_NAME/
 ENV PATH=$DEST/$VERSION:$PATH
 
 RUN yum install -y bzip2 \
+                   java \
                    ncurses-devel \
+                   perl-Data-Dumper \
                    zlib-devel ; \
     git clone $GIT ; \
     cd $APP_NAME ; \
