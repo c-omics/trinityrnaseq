@@ -15,6 +15,18 @@ ENV GIT=https://github.com/trinityrnaseq/trinityrnaseq.git
 ENV LD_LIBRARY_PATH=/software/applications/trinityrnaseq/v2.2.0/trinity-plugins/htslib
 ENV DEST=/software/applications/$APP_NAME/
 ENV PATH=$DEST/$VERSION:$PATH
+ENV PATH=$DEST/$VERSION/util:$PATH
+ENV PATH=$DEST/$VERSION/util/support_scripts:$PATH
+ENV PATH=$DEST/$VERSION/util/misc:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/splice_path_analysis:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/iso_reco_analysis:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/blat_util:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/bam_gene_tests:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/altsplice_simulation_toolkit:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/TEST_SUPPORT/BFLY_TESTING:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/Monarch_util:$PATH
+ENV PATH=$DEST/$VERSION/util/misc/Artemis:$PATH
+
 
 RUN yum install -y bzip2 \
                    java \
