@@ -33,9 +33,11 @@ RUN yum install -y bzip2 \
                    ncurses-devel \
                    perl-Data-Dumper \
                    zlib-devel ; \
+    yum clean all ; \
     git clone $GIT ; \
     cd $APP_NAME ; \
     git checkout tags/$VERSION ; \
+    rm -rf .git ; \
     sed -i 's/^\(trinity_essentials:.*\) samtools/\1 /g' Makefile ; \
     make -j        ; \
     make trinity_essentials   ; \
